@@ -1,0 +1,37 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Publish
+      run: .\publish.bat
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: published-exe
+        path: ./publish/*.exe
