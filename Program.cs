@@ -1,4 +1,11 @@
-﻿using OfficeOpenXml;
+﻿/*
+ * InterflexAnalyzer - A tool for analyzing Interflex Monatsjournal Excel files
+ * 
+ * This software is provided under the MIT License.
+ * See the LICENSE file for the full license text.
+ */
+
+using OfficeOpenXml;
 using System.Globalization;
 
 // License for EPPlus (required for non-commercial use)
